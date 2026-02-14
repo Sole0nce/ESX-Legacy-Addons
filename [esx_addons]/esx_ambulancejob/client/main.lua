@@ -83,7 +83,7 @@ function OnPlayerDeath()
     FreezeEntityPosition(ESX.PlayerData.ped, true)
 
     Citizen.CreateThreadNow(function()
-      while ESX.PlayerData.dead do
+      while isDead do
         if not IsEntityPlayingAnim(ESX.PlayerData.ped, Config.DeathAnim.dict, Config.DeathAnim.name, 3) then
           TaskPlayAnim(ESX.PlayerData.ped, Config.DeathAnim.dict, Config.DeathAnim.name, Config.DeathAnim.fadeIn, Config.DeathAnim.fadeOut,
             -1, Config.DeathAnim.flags, Config.DeathAnim.playbackRate, false, false, false)
