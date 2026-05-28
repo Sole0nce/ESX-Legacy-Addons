@@ -23,6 +23,9 @@ end)
 
 Citizen.CreateThread(function()
     while (not ESX.PlayerLoaded) do Citizen.Wait(0) end
+    while (not Modules.Weather.ByZone) do Citizen.Wait(0) end
+
+    SetMillisecondsPerGameMinute(Config.Time.secondsPerGameMinute * 1000)
 
     while (true) do
         Modules.Time.tick()
