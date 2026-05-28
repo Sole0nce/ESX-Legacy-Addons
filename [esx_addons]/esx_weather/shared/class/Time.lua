@@ -8,7 +8,7 @@ Shared.Class = Shared.Class or {}
 
 ---@class Time:SerializedTime
 ---@field new fun(self: Time, SerializedTime:SerializedTime): Time
----@field add fun(self: Time, SerializedTime:SerializedTime)
+---@field add fun(self: Time, SerializedTime:SerializedTime): SerializedTime
 ---@field serialize fun(self: Time): SerializedTime
 Shared.Class.Time = {}
 
@@ -34,6 +34,8 @@ function Shared.Class.Time:add(SerializedTime)
     self.seconds = self.seconds % 60
     self.minutes = self.minutes % 60
     self.hours = self.hours % 24
+
+    return self:serialize()
 end
 
 function Shared.Class.Time:serialize()
