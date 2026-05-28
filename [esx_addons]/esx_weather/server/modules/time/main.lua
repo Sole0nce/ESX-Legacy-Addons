@@ -2,8 +2,9 @@ Modules = Modules or {}
 Modules.Time = {}
 
 ---@param src integer?
-function Modules.Time.broadcast(src)
-    TriggerClientEvent("esx_weather:client:time:setTime", (src or -1), Modules.Time.get())
+---@param time Time?
+function Modules.Time.broadcast(src, time)
+    TriggerClientEvent("esx_weather:client:time:setTime", (src or -1), time or Modules.Time.get())
 end
 
 ---@return SerializedTime
@@ -15,4 +16,9 @@ function Modules.Time.get()
         minutes = tonumber(t.min) or 0,
         seconds = tonumber(t.sec) or 0
     } --[[@as SerializedTime]]
+end
+
+---@param time Time
+function Modules.Time.setTime(time)
+    Modules.Time.broadcast(nil, time)
 end
